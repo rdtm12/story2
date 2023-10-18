@@ -1,0 +1,17 @@
+!pip install ultralytics
+import torch
+from pathlib import Path
+from PIL import Image
+
+# Load YOLOv5 model 
+model_path = 'yolov5s.pt'
+model = torch.hub.load('ultralytics/yolov5:master', 'yolov5s')
+
+# Load an input image
+image_path = '/content/cat-unsplash.jpg'
+img = Image.open(image_path)
+
+# Perform object detection
+results = model(img)
+
+results.show()
